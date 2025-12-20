@@ -9,6 +9,7 @@
     @else
     <h6>Olá Utilizador</h6>
     <img src="{{asset('images/nophoto.jpg')}}" alt="">
+
     @endif
 
 
@@ -18,6 +19,8 @@
         <li><a href="{{ route('users.add') }}">Adicionar Users</a></li>
         <li><a href="{{route('users.all')}}">Todos os Users</a></li>
         <li><a href="{{route('tasks.all')}}">Todas as Tasks</a></li>
+        <li><a href="{{route('prendas.all')}}">Todas as Prendas de Natal</a></li>
         
+
     </ul>
 @endsection

@@ -29,7 +29,7 @@ class UserController extends Controller
         ];
 
         //dd($cesaeInfo['name']);
-        $users = DB::table('users')->get();
+        $users = User::all();
 
 
 
@@ -93,5 +93,31 @@ class UserController extends Controller
     }
 
 
+    //Funcao para ver detalhes de um user
+    public function viewUser($id){
+        //query que vai buscar o user à base de dados
+
+        $user = DB::table('users')
+        ->where('id', $id)
+        ->first();
+
+
+        return view('users.view_user', compact('user'));
+    }
+
+    function deleteUser($id){
+        //query que apaga o user da base de dados
+
+         Db::table('tasks')
+        ->where('user_id', $id)
+        ->delete();
+
+
+        DB::table('users')
+        ->where('id', $id)
+        ->delete();
+
+        return back();
+    }
 
 }

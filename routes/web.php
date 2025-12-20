@@ -4,6 +4,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UtilController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\PrendaNatalController;
 
 Route::get('/', [UtilController::class, 'home'])->name('utils.welcome');
 
@@ -32,6 +33,14 @@ Route::fallback(function(){return view('utils.fallbackV');});
 Route::get('/getusers', [UserController::class, 'selectUserFromDB']);
 Route::get('/adicionarusers', [UserController::class, 'addUser'])->name('users.add');
 
-
 Route::get('/allusers', [UserController::class, 'allUsers'])->name('users.all');
 Route::get('/alltasks', [TaskController::class, 'allTasks'])->name('tasks.all');
+Route::get('/viewuser/{id}', [UserController::class, 'viewUser'])->name('users.view');
+Route::get('/deleteuser/{id}', [UserController::class, 'deleteUser'])->name('users.delete');
+Route::get('/viewtask/{id}', [TaskController::class, 'viewTask'])->name('tasks.view');
+Route::get('/deletetask/{id}', [TaskController::class, 'deleteTask'])->name('tasks.delete');
+
+Route::get('/prendas', [PrendaNatalController::class, 'allPrendas'])->name('prendas.all');
+Route::get('/prendas/{id}', [PrendaNatalController::class, 'viewPrenda'])->name('prendas.view');
+Route::get('/deleteprenda/{id}', [PrendaNatalController::class, 'deletePrenda'])->name('prendas.delete');
+

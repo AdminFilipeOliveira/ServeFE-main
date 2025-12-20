@@ -5,25 +5,31 @@
            <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Nome</th>
+      <th scope="col">ID</th>
+      <th scope="col">Task</th>
       <th scope="col">Status</th>
-      <th scope="col">Data de Conclusao</th>
+      <th scope="col">User</th>
       <th scope="col">User ID</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
-  <tbody>
-    @foreach ($tasks as $task)
-    </tr>
-      <th scope="row">{{$task->id}}</th>
-      <td>{{$task->name}}</td>
-      <td>{{$task->status}}</td>
-      <td>{{$task->due_at }}</td>
-      <td>{{$task->usname }}</td>
-      
-    </tr>
-    @endforeach
-  </tbody>
+ <tbody>
+@foreach ($tasks as $task)
+<tr>
+    <th scope="row">{{ $task->id }}</th>
+    <td>{{ $task->name }}</td>
+    <td>{{ $task->status }}</td>
+    <td>{{ $task->usname }}</td>
+    <td>{{ $task->user_id }}</td>
+
+    <td>
+        <a href="{{ route('tasks.view', $task->id) }}" class="btn btn-info">Ver</a>
+        <a href="{{ route('tasks.delete', $task->id) }}" class="btn btn-danger">Eliminar</a>
+    </td>
+</tr>
+@endforeach
+</tbody>
+
 </table>
 
 @endsection
