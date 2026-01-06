@@ -42,5 +42,8 @@ Route::get('/deletetask/{id}', [TaskController::class, 'deleteTask'])->name('tas
 
 Route::get('/prendas', [PrendaNatalController::class, 'allPrendas'])->name('prendas.all');
 Route::get('/prendas/{id}', [PrendaNatalController::class, 'viewPrenda'])->name('prendas.view');
+
+
+
 Route::get('/deleteprenda/{id}', [PrendaNatalController::class, 'deletePrenda'])->name('prendas.delete');
 

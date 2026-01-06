@@ -18,7 +18,7 @@
 <tr>
     <th scope="row">{{ $task->id }}</th>
     <td>{{ $task->name }}</td>
-    <td>{{ $task->status }}</td>
+    <td>{{ $task->status ? 'Comprada' : 'Por comprar' }}</td>
     <td>{{ $task->usname }}</td>
     <td>{{ $task->user_id }}</td>
 
