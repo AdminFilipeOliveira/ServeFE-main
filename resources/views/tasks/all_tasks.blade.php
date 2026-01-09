@@ -1,36 +1,29 @@
 @extends('layouts.main_layout')
+
 @section('content')
+<h2>All Tasks</h2>
 
-        <h2>All Tasks</h2>
-           <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Task</th>
-      <th scope="col">Status</th>
-      <th scope="col">User</th>
-      <th scope="col">User ID</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
- <tbody>
-@foreach ($tasks as $task)
-<tr>
-    <th scope="row">{{ $task->id }}</th>
-    <td>{{ $task->name }}</td>
-    <td>{{ $task->status ? 'Comprada' : 'Por comprar' }}</td>
-    <td>{{ $task->usname }}</td>
-    <td>{{ $task->user_id }}</td>
-
-    <td>
-        <a href="{{ route('tasks.view', $task->id) }}" class="btn btn-info">Ver</a>
-        <a href="{{ route('tasks.delete', $task->id) }}" class="btn btn-danger">Eliminar</a>
-    </td>
-</tr>
-@endforeach
-</tbody>
-
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Task</th>
+            <th>User</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($tasks as $task)
+        <tr>
+            <td>{{ $task->id }}</td>
+            <td>{{ $task->name }}</td>
+            <td>{{ $task->usname }}</td>
+            <td>
+                <a href="{{ route('tasks.view', $task->id) }}" class="btn btn-info">Ver</a>
+                <a href="{{ route('tasks.delete', $task->id) }}" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
 </table>
-
 @endsection
-

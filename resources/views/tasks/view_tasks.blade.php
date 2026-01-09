@@ -3,9 +3,8 @@
 @section('content')
 <h2>Task</h2>
 
-<p>ID: {{ $task->id }}</p>
-<p>Título: {{ $task->name }}</p>
-<p>Status: {{ $task->status }}</p>
-<p>Data de Conclusão: {{ $task->due_at }}</p>
+<p><strong>ID:</strong> {{ $task->id }}</p>
+<p><strong>Título:</strong> {{ $task->name }}</p>
+<p><strong>Descrição:</strong> {{ $task->description }}</p>
 @endsection
 

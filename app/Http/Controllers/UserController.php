@@ -5,9 +5,11 @@ use App\Models\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Hash;
+//Controlador para gerir utilizadores
 class UserController extends Controller
 {
+    //Exibe o formulário para adicionar um novo utilizador
     public function addUser(){
 
         $pageAdmin = 'António';
@@ -35,7 +37,7 @@ class UserController extends Controller
 
         return view('users.all_users',compact('cesaeInfo', 'students', 'users'));
     }
-
+//Funções que interagem com a base de dados usando query builder
     public function insertUserIntoDB(){
 
         //validar se dados estão em conformidade com a estrutura da base de dados
@@ -118,6 +120,35 @@ class UserController extends Controller
         ->delete();
 
         return back();
+    }
+    //query que vai buscar o user à base de dados
+    public function storeUser(Request $request){
+        //dd($request->all());
+        $request->validate([
+            'name' => 'required|string|max:55',
+            'email' => 'required|string|email|max:55|unique:users',
+            'password' => 'required|string|min:8',
+
+        ]);
+        User::insert([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+
+        ]);
+        return redirect()->route('users.all')->with('mensagem', 'User added successfully');
+
+
+
+        //inserir na base de dados
+        DB::table('users')
+        ->insert([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => bcrypt($validated['password']),
+            'nif' => $validated['nif'],
+
+        ]);
     }
 
 }

@@ -1,38 +1,39 @@
 @extends('layouts.main_layout')
 @section('content')
-<p>O email de contacto, caso detecte erros é {{$cesaeInfo['email']}}, na {{$cesaeInfo['address']}} </p>
-    <h5>Lista de todos os users dev forma  estatica{{$cesaeInfo['email']}}</h5>
-    <ul>
-        @foreach ($students as $student)
-        <li>{{$student['name']}}  e o email é {{$student['email']}}</li>
-        @endforeach
-    </ul>
-    <h5>Users que sao carregados da base de dados(tabela de users)</h5>
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Nome</th>
-      <th scope="col">Email</th>
-      <th scope="col">Nif</th>
-      <th></th>
-      <th></th>
+    <h1>O administrador da página é {{ $pageAdmin }}</h1>
 
-    </tr>
-  </thead>
-  <tbody>
-    @foreach ($users as $user )
-    </tr>
-      <th scope="row">{{$user->id}}</th>
-      <td>{{$user->name}}</td>
-      <td>{{$user->email}}</td>
-      <td>{{$user->nif}}</td>
-      <td><a href="{{route('users.view', $user->id)}}" class="btn btn-info">Ver</a></td>
-      <td><a class="btn btn-danger" href="{{route('users.delete', $user->id)}}">Eliminar</a></td>
+    <h6>Aqui vais ter um formulário para adicionar users</h6>
 
-    </tr>
-    @endforeach
-  </tbody>
-</table>
+    <form method="POST" action="{{ route('users.store') }}">
+        @csrf
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nome</label>
+            <input name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        @error('name')
+            Nome inválido
+        @enderror
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        @error('email')
+            Email inválido
+        @enderror
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        @error('password')
+            password inválido
+        @enderror
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
 
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
 @endsection

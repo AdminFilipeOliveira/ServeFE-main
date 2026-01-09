@@ -9,7 +9,7 @@ class PrendaNatal extends Model
 {
     use HasFactory;
 
-    // Nome da tabela (porque não segue o padrão inglês)
+    // Nome da tabela
     protected $table = 'prendas_natal';
 
     // Campos que podem ser preenchidos em massa
@@ -20,9 +20,8 @@ class PrendaNatal extends Model
         'utilizador_id',
     ];
 
-    /**
-     * Uma prenda pertence a um utilizador
-     */
+    //Uma prenda pertence a um utilizador
+
     public function utilizador()
     {
         return $this->belongsTo(User::class, 'utilizador_id');

@@ -21,7 +21,9 @@
             <td>{{ $prenda->id }}</td>
             <td>{{ $prenda->nome_prenda }}</td>
             <td>{{ $prenda->valor_previsto }} €</td>
+            
             <td>{{ $prenda->valor_gasto ?? '-' }} €</td>
+
             <td>
                 {{ $prenda->valor_previsto - ($prenda->valor_gasto ?? 0) }} €
             </td>

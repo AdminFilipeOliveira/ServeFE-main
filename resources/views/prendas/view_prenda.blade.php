@@ -7,7 +7,7 @@
 <p>Utilizador: {{ $prenda->nome_utilizador }}</p>
 <p>Valor Previsto: {{ $prenda->valor_previsto }} €</p>
 <p>Valor Gasto: {{ $prenda->valor_gasto }} €</p>
-<p>Diferença: {{ $prenda->valor_previsto - ($prenda->valor_gasto) }} €</p>
+<p>Diferença: {{ $prenda->valor_previsto - ($prenda->valor_gasto) ?? 0 }} €</p>
 
 <a href="{{ route('prendas.all') }}" class="btn btn-secondary">Voltar</a>
 @endsection
